@@ -9,6 +9,12 @@ public class Merge_Sort {
         System.out.println(Arrays.toString(ans));
     }
 
+/**
+ * Merge Sort:- Divide array into two halves, Sort Both & Merge Them.
+ * T.C:- O(n*log(n)).
+ * S.C:- O(n).
+ */
+
     public static int[] mergeSort(int[] arr) {
         if (arr.length == 1) {
             return arr;
