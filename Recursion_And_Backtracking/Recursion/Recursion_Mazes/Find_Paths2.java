@@ -3,10 +3,11 @@ package Recursion_And_Backtracking.Recursion.Recursion_Mazes;
 import java.util.ArrayList;
 
 /**
- * Find_Paths1:- RETURN ALL PATHS TO REACH THE TARGET, WHILE WE CAN EITHER GO
- * RIGHT AND DOWN.
+ * Find_Paths2:- RETURN ALL PATHS TO REACH THE TARGET, WHILE WE CAN EITHER GO
+ * RIGHT,DOWN AND DIAGONALLY.
  */
-public class Find_Paths1 {
+
+public class Find_Paths2 {
     public static void main(String[] args) {
         System.out.println(totalPaths(0, 0));
         printPaths("", 0, 0);
@@ -25,10 +26,13 @@ public class Find_Paths1 {
         // To Travel Down.
         int down = totalPaths(row + 1, col);
 
+        // To Travel Diagonally.
+        int diagonal = totalPaths(row + 1, col + 1);
+
         // To Travel Right.
         int right = totalPaths(row, col + 1);
 
-        return down + right;
+        return down + diagonal + right;
 
     }
     // ----------------------------------------------------------------------------------------
@@ -45,6 +49,11 @@ public class Find_Paths1 {
         // To Travel Down.
         if (row < 2) {
             printPaths(ans + 'D', row + 1, col);
+        }
+
+        // To Travel Diagonally.
+        if (row < 2 && col < 2) {
+            printPaths(ans + 'd', row + 1, col + 1);
         }
 
         // To Travel Right.
@@ -70,6 +79,11 @@ public class Find_Paths1 {
         // To Travel Down.
         if (row < 2) {
             local.addAll(getPaths(ans + 'D', row + 1, col));
+        }
+
+        // To Travel Diagonally.
+        if (row < 2 && col < 2) {
+            local.addAll(getPaths(ans + 'd', row + 1, col + 1));
         }
 
         // To Travel Right.
