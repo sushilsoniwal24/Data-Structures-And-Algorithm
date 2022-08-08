@@ -11,7 +11,8 @@ public class Rat_In_Maze1 {
         System.out.println(findPath(maze, n));
     }
 
-    static ArrayList<String> res = new ArrayList<>(); // Static arrayList.
+    // Creating A Static ArrayList.
+    static ArrayList<String> res = new ArrayList<>();
 
     public static ArrayList<String> findPath(int[][] maze, int n) {
         res.clear();
