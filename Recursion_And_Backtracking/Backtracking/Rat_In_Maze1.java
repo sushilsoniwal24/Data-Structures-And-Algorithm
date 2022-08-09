@@ -17,7 +17,7 @@ public class Rat_In_Maze1 {
     public static ArrayList<String> findPath(int[][] maze, int n) {
         res.clear();
 
-        // If start or destination is a obstacle.
+        // If start or destination is an obstacle.
         if (maze[0][0] == 0 || maze[n - 1][n - 1] == 0) {
             return res;
         }
