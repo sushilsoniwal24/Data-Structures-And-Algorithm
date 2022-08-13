@@ -19,6 +19,23 @@ public class Easy_LLQ {
         return num;
     }
 
+    /*
+     * (1) Link:- https://leetcode.com/problems/reverse-linked-list/
+     * (2) Time Complexity = O(n).
+     * (3) Space Complexity = O(1).
+     */
+    public ListNode reverseList(ListNode head) {
+        ListNode current = head;
+        ListNode prev = null;
+        while (current != null) {
+            ListNode temp = current.next;
+            current.next = prev;
+            prev = current;
+            current = temp;
+        }
+        return prev;
+    }
+
     /* Node Structure. */
     public class ListNode {
         public int val;
