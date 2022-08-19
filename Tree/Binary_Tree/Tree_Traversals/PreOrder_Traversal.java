@@ -14,7 +14,7 @@ public class PreOrder_Traversal {
         }
     }
 
-    /* Recursive PreOrder Traversal:- root->left->right. */
+    /* Recursive PreOrder Traversal:- Root -> Left -> Right. */
     public static void recPreOrder(Node root) {
         if (root == null) {
             return;
