@@ -1,5 +1,9 @@
 package Tree.Binary_Tree.Tree_Traversals;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 public class PostOrder_Traversal {
     static class Node {
         int data;
@@ -23,6 +27,34 @@ public class PostOrder_Traversal {
         System.out.print(root.data + " ");
     }
 
+    /* Iterative PostOrder Traversal Using 2 Stacks. */
+    public static List<Integer> postOrder2(Node root) {
+        List<Integer> post = new ArrayList<>();
+
+        Stack<Node> stack1 = new Stack<>();
+        Stack<Node> stack2 = new Stack<>();
+
+        stack1.push(root);
+
+        while (!stack1.isEmpty()) {
+            root = stack1.pop();
+            stack2.add(root);
+
+            if (root.left != null) {
+                stack1.push(root.left);
+            }
+            if (root.right != null) {
+                stack1.push(root.right);
+            }
+        }
+
+        while (!stack2.isEmpty()) {
+            post.add(stack2.pop().data);
+        }
+
+        return post;
+    }
+
     public static void main(String[] args) {
         Node root = new Node(4);
         root.left = new Node(9);
@@ -35,5 +67,7 @@ public class PostOrder_Traversal {
         root.right.right.left = new Node(20);
 
         recPostOrder(root);
+        List<Integer> ans = postOrder2(root);
+        System.out.println(ans);
     }
 }
