@@ -1,5 +1,9 @@
 package Tree.Binary_Tree.Tree_Traversals;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 public class PreOrder_Traversal {
 
     static class Node {
@@ -24,6 +28,32 @@ public class PreOrder_Traversal {
         recPreOrder(root.right);
     }
 
+    /* Iterative PreOrder Traversal:- Root -> Left -> Right. */
+    public static List<Integer> preorderTraversal(Node root) {
+        List<Integer> pre = new ArrayList<>();
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+
+        if (root == null) {
+            return pre;
+        }
+
+        while (!stack.isEmpty()) {
+            Node current = stack.peek();
+            pre.add(current.data);
+            stack.pop();
+
+            if (current.right != null) {
+                stack.push(current.right);
+            }
+            if (current.left != null) {
+                stack.push(current.left);
+            }
+        }
+
+        return pre;
+    }
+
     public static void main(String[] args) {
         Node root = new Node(4);
         root.left = new Node(9);
@@ -36,5 +66,7 @@ public class PreOrder_Traversal {
         root.right.right.left = new Node(20);
 
         recPreOrder(root);
+        List<Integer> ans = preorderTraversal(root);
+        System.out.println(ans);
     }
 }
