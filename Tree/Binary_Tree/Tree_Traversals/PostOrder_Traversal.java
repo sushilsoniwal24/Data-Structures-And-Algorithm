@@ -26,6 +26,40 @@ public class PostOrder_Traversal {
         recPostOrder(root.right);
         System.out.print(root.data + " ");
     }
+    // ----------------------------------------------------------------------------------------------
+
+    /* Iterative PostOrder Traversal Using 1 Stack. */
+    public static List<Integer> postOrder1(Node root) {
+        List<Integer> post = new ArrayList<>();
+        Stack<Node> stack = new Stack<>();
+
+        if (root == null) {
+            return post;
+        }
+
+        while (root != null || !stack.isEmpty()) {
+            if (root != null) {
+                stack.push(root);
+                root = root.left;
+            } else {
+                Node temp = stack.peek().right;
+                if (temp == null) {
+                    temp = stack.peek();
+                    stack.pop();
+                    post.add(temp.data);
+                    while (!stack.isEmpty() && temp == stack.peek().right) {
+                        temp = stack.peek();
+                        stack.pop();
+                        post.add(temp.data);
+                    }
+                } else {
+                    root = temp;
+                }
+            }
+        }
+        return post;
+    }
+    // ----------------------------------------------------------------------------------------------
 
     /* Iterative PostOrder Traversal Using 2 Stacks. */
     public static List<Integer> postOrder2(Node root) {
@@ -67,7 +101,7 @@ public class PostOrder_Traversal {
         root.right.right.left = new Node(20);
 
         recPostOrder(root);
-        List<Integer> ans = postOrder2(root);
+        List<Integer> ans = postOrder1(root);
         System.out.println(ans);
     }
 }
