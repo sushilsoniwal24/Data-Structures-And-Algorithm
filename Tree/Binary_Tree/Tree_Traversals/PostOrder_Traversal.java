@@ -32,28 +32,25 @@ public class PostOrder_Traversal {
     public static List<Integer> postOrder1(Node root) {
         List<Integer> post = new ArrayList<>();
         Stack<Node> stack = new Stack<>();
+        Node curr = root, prev = null;
 
         if (root == null) {
             return post;
         }
 
-        while (root != null || !stack.isEmpty()) {
-            if (root != null) {
-                stack.push(root);
-                root = root.left;
+        while (curr != null || !stack.isEmpty()) {
+            if (curr != null) {
+                stack.push(curr);
+                curr = curr.left;
             } else {
-                Node temp = stack.peek().right;
-                if (temp == null) {
-                    temp = stack.peek();
+                curr = stack.peek();
+                if (curr.right == null || curr.right == prev) {
+                    post.add(curr.data);
                     stack.pop();
-                    post.add(temp.data);
-                    while (!stack.isEmpty() && temp == stack.peek().right) {
-                        temp = stack.peek();
-                        stack.pop();
-                        post.add(temp.data);
-                    }
+                    prev = curr;
+                    curr = null;
                 } else {
-                    root = temp;
+                    curr = curr.right;
                 }
             }
         }
