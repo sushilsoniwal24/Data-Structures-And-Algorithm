@@ -1,9 +1,8 @@
 package Tree.Binary_Tree.Tree_Questions;
 
 /**
- * Max_Depth :- 
+ * Max_Depth :- https://leetcode.com/problems/maximum-depth-of-binary-tree/
  */
-
 
 public class Max_Depth {
     static class Node {
@@ -16,6 +15,7 @@ public class Max_Depth {
         }
     }
 
+    /* Maximum Depth Of A Binary Tree. */
     public static int maxDepth(Node root) {
         if (root == null) {
             return 0;
