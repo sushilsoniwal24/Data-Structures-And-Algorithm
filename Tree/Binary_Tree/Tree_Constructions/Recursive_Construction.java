@@ -6,19 +6,19 @@ public class Recursive_Construction {
     static Scanner in = null;
 
     static class Node {
-        int data;
+        int val;
         Node left, right;
 
-        public Node(int data) {
-            this.data = data;
+        public Node(int val) {
+            this.val = val;
             this.left = null;
             this.right = null;
         }
-    } 
+    }
 
-    /* Method To Create A Tree Step-By-Step. */
+    /* Method To Create A Tree Step-By-Step Using Recursion. */
     public static Node createTree() {
-        System.out.print("Enter Data:- ");
+        System.out.print("Enter Data:-");
         int data = in.nextInt();
 
         if (data == -1) {
@@ -27,10 +27,13 @@ public class Recursive_Construction {
 
         Node root = new Node(data);
 
+        // Recursive Call For Left.
         System.out.println("Enter left for " + data);
-        root.left = createTree(); // Recursive Call For Left.
+        root.left = createTree();
+
+        // Recursive Call For Right.
         System.out.println("Enter right for " + data);
-        root.right = createTree(); // Recursive Call For Right.
+        root.right = createTree();
 
         return root;
     }
@@ -38,6 +41,6 @@ public class Recursive_Construction {
     public static void main(String[] args) {
         in = new Scanner(System.in);
         Node root = createTree();
-        System.out.println(root.data);
+        System.out.println(root.val);
     }
 }
