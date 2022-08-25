@@ -6,17 +6,6 @@ package Tree.Binary_Tree.Tree_Questions;
  */
 public class Diameter_Binary_Tree {
 
-    static class Node {
-        int data;
-        Node left;
-        Node right;
-
-        public Node(int data) {
-            this.data = data;
-            left = right = null;
-        }
-    }
-
     /* Height Of A Binary Tree. */
     private static int height(Node root) {
         if (root == null) {
@@ -63,7 +52,7 @@ public class Diameter_Binary_Tree {
         root.right = new Node(3);
         root.left.left = new Node(4);
         root.left.right = new Node(5);
-        // root.left.left.left = new Node(8);
+        root.left.left.left = new Node(8);
 
         System.out.println(diameterOfBinaryTree1(root));
         System.out.println(diameterOfBinaryTree2(root));
