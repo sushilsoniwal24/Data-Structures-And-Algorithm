@@ -5,22 +5,16 @@ package Tree.Binary_Tree.Tree_Questions;
  */
 
 public class Max_Depth {
-    static class Node {
-        int data;
-        Node left, right;
-
-        public Node(int data) {
-            this.data = data;
-            left = right = null;
-        }
-    }
 
     /* Maximum Depth Of A Binary Tree. */
     public static int maxDepth(Node root) {
         if (root == null) {
             return 0;
         }
-        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+
+        int left_height = maxDepth(root.left);
+        int right_height = maxDepth(root.right);
+        return 1 + Math.max(left_height, right_height);
     }
 
     public static void main(String[] args) {
