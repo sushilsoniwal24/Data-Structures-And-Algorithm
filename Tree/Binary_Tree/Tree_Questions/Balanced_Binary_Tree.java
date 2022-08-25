@@ -1,18 +1,10 @@
 package Tree.Binary_Tree.Tree_Questions;
 
 public class Balanced_Binary_Tree {
-    static class Node {
-        int data;
-        Node left;
-        Node right;
 
-        public Node(int data) {
-            this.data = data;
-            left = right = null;
-        }
-    }
+    /* Function To Check Whether A Given Tree Is Balanced Or Not. */
 
-    /* Is Balanced Binary Tree :- O(N^2). */
+    // Method - 01 :- T.C = O(N^2) & S.C = O(1).
     public static boolean check1(Node root) {
         if (root == null) {
             return true;
@@ -33,16 +25,9 @@ public class Balanced_Binary_Tree {
         }
         return true;
     }
+    // --------------------------------------------------------------------------------------
 
-    /* Method To Calculate Height. */
-    public static int height(Node root) {
-        if (root == null) {
-            return 0;
-        }
-        return 1 + Math.max(height(root.left), height(root.right));
-    }
-
-    /* Is Balanced Binary Tree :- O(N). */
+    // Method - 02 :- T.C = O(N) & S.C = O(1).
     public static int check2(Node root) {
         if (root == null) {
             return 0;
@@ -61,6 +46,14 @@ public class Balanced_Binary_Tree {
         return Math.max(left, right) + 1;
     }
 
+    /* Method To Calculate Height Of A Given Tree. */
+    public static int height(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        return 1 + Math.max(height(root.left), height(root.right));
+    }
+
     public static void main(String[] args) {
         Node root = new Node(1);
         root.left = new Node(2);
@@ -72,5 +65,4 @@ public class Balanced_Binary_Tree {
         System.out.println(check1(root));
         System.out.println(check2(root));
     }
-
 }
