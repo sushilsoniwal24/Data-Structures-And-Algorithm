@@ -5,16 +5,6 @@ package Tree.Binary_Tree.Tree_Questions;
  */
 
 public class Count_Nodes {
-    static class Node {
-        int data;
-        Node left;
-        Node right;
-
-        public Node(int data) {
-            this.data = data;
-            left = right = null;
-        }
-    }
 
     /* Count The Nodes:- O(N). */
     public static int count(Node root) {
