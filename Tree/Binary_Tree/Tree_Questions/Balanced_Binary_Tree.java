@@ -1,50 +1,75 @@
 package Tree.Binary_Tree.Tree_Questions;
 
+/**
+ * Balanced Binary Tree :- https://leetcode.com/problems/balanced-binary-tree/
+ */
+
 public class Balanced_Binary_Tree {
 
-    /* Function To Check Whether A Given Tree Is Balanced Or Not. */
+    /* Function To Check Whether A Given Binary Tree Is Balanced Or Not. */
 
-    // Method - 01 :- T.C = O(N^2) & S.C = O(1).
-    public static boolean check1(Node root) {
+    // Method - 01 :- T.C = O(N^2) & S.C = O(N).
+    public static boolean isBalanced1(Node root) {
+
+        // Base Case.
         if (root == null) {
             return true;
         }
 
-        int lh = height(root.left);
-        int rh = height(root.right);
+        // Calculating The Height Of Left & Right Subtree.
+        int left_height = height(root.left);
+        int right_height = height(root.right);
 
-        if (Math.abs(lh - rh) > 1) {
+        // Condition For A Balance Binary Tree.
+        if (Math.abs(left_height - right_height) > 1) {
             return false;
         }
 
-        boolean left = check1(root.left);
-        boolean right = check1(root.right);
+        // Check For Left & Right Subtree.
+        boolean is_Left_Balanced = isBalanced1(root.left);
+        boolean is_Right_Balanced = isBalanced1(root.right);
 
-        if (left == false || right == false) {
+        if (is_Left_Balanced == false || is_Right_Balanced == false) {
             return false;
         }
+
         return true;
     }
-    // --------------------------------------------------------------------------------------
+    // *****************************************************************
 
-    // Method - 02 :- T.C = O(N) & S.C = O(1).
-    public static int check2(Node root) {
+    // Method - 02 :- T.C = O(N) & S.C = O(N).
+    public static int check(Node root) {
+
+        // Base Case.
         if (root == null) {
             return 0;
         }
-        int left = check2(root.left);
-        int right = check2(root.right);
 
-        if (left == -1 || right == -1) {
-            return -1;
-        }
+        // Check For Left & Right Subtree.
+        int left = check(root.left);
+        int right = check(root.right);
 
+        // Check For Balanced Tree.
         if (Math.abs(left - right) > 1) {
             return -1;
         }
 
+        // It'll Only Execute If Tree Isn't Height Balanced.
+        if (left == -1 || right == -1) {
+            return -1;
+        }
+
+        // Return height.
         return Math.max(left, right) + 1;
     }
+
+    public static boolean isBalanced2(Node root) {
+        if (check(root) == -1) {
+            return false;
+        }
+        return true;
+    }
+    // *****************************************************************
 
     /* Method To Calculate Height Of A Given Tree. */
     public static int height(Node root) {
@@ -62,7 +87,7 @@ public class Balanced_Binary_Tree {
         root.left.right = new Node(5);
         root.left.left.left = new Node(8);
 
-        System.out.println(check1(root));
-        System.out.println(check2(root));
+        System.out.println(isBalanced1(root));
+        System.out.println(isBalanced2(root));
     }
 }
