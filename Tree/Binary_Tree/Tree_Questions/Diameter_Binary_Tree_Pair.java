@@ -6,7 +6,7 @@ public class Diameter_Binary_Tree_Pair {
         int height;
     }
 
-    // T.C = O(n) & S.C = O(1).
+    // T.C = O(n) & S.C = O(n).
     public static Pair diameterOfBinaryTree1(Node root) {
 
         // Base Case.
