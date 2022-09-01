@@ -2,5 +2,7 @@
     "java.project.sourcePaths": [
         "."
     ],
-    "editor.fontFamily": "Century"
+    "editor.fontFamily": "Century",
+    "terminal.integrated.tabs.defaultColor": "terminal.ansiYellow",
+    "editor.tabSize": 4
 }
