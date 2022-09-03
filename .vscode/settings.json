@@ -4,5 +4,6 @@
     ],
     "editor.fontFamily": "Century",
     "terminal.integrated.tabs.defaultColor": "terminal.ansiYellow",
-    "editor.tabSize": 4
+    "editor.tabSize": 4,
+    "editor.fontSize": 14
 }
