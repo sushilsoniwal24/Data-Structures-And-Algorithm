@@ -53,27 +53,28 @@ public class MinHeap {
         arr[1] = arr[size];
         size--;
 
-        int i = 1;
-        while (i < size) {
-            int left = 2 * i;
-            int right = 2 * i + 1;
+        int index = 1;
+        while (index < size) {
+            int left_child = 2 * index;
+            int right_child = 2 * index + 1;
 
-            if (left < size && arr[i] > arr[left]) {
-                int temp = arr[i];
-                arr[i] = arr[left];
-                arr[left] = temp;
-                i = left;
-            } else if (right < size && arr[i] > arr[right]) {
-                int temp = arr[i];
-                arr[i] = arr[right];
-                arr[right] = temp;
-                i = right;
+            if (left_child < size && arr[index] > arr[left_child]) {
+                int temp = arr[index];
+                arr[index] = arr[left_child];
+                arr[left_child] = temp;
+                index = left_child;
+            } else if (right_child < size && arr[index] > arr[right_child]) {
+                int temp = arr[index];
+                arr[index] = arr[right_child];
+                arr[right_child] = temp;
+                index = right_child;
             } else {
                 return;
             }
         }
     }
 
+    /* Function To Print The Heap. */
     public void print() {
         for (int i = 1; i <= size; i++) {
             System.out.print(arr[i] + " ");
@@ -89,6 +90,8 @@ public class MinHeap {
         heap.insert(20);
         heap.insert(70);
         heap.insert(60);
+        heap.insert(100);
+        heap.insert(50);
 
         heap.print();
 
