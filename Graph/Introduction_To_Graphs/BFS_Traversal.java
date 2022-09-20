@@ -11,9 +11,15 @@ public class BFS_Traversal {
      * ! Time Complexity = O(N) + O(2E).
      * ! Space Complexity = O(3N)
      */
+
     public ArrayList<Integer> bfsOfGraph(int vertices, ArrayList<ArrayList<Integer>> adj) {
+
+        // ! ArrayList To Store BFS Traversal.
         ArrayList<Integer> bfs = new ArrayList<Integer>();
-        boolean[] visited = new boolean[vertices];
+
+        // ! Boolean Array To Store History Of Visited Nodes.
+        boolean[] visited = new boolean[vertices]; // * 0-Based Indexing
+
         Queue<Integer> queue = new LinkedList<>();
 
         queue.add(0);
@@ -23,10 +29,11 @@ public class BFS_Traversal {
             Integer node = queue.poll();
             bfs.add(node);
 
-            for (Integer e : adj.get(node)) {
-                if (visited[e] == false) {
-                    visited[e] = true;
-                    queue.add(e);
+            // ! Check For Neighbours.
+            for (Integer num : adj.get(node)) {
+                if (!visited[num]) {
+                    visited[num] = true;
+                    queue.add(num);
                 }
             }
         }
