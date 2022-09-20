@@ -1,34 +1,35 @@
 package Graph.Introduction_To_Graphs;
 
+import java.util.Scanner;
+
 public class Adjacency_Matrix {
-    int vertices;
-    int[][] matrix;
+    static Scanner in = new Scanner(System.in);
 
-    Adjacency_Matrix(int v) {
-        vertices = v;
-        matrix = new int[v][v];
+    // ? Method To Represent Graph In Form Of A Matrix.
+    public static void matrix_representation(int vertices, int edges) {
+        int[][] adj = new int[vertices][vertices];
+
+        for (int i = 0; i < edges; i++) {
+            System.out.print("Enter The Value Of Source :- ");
+            int source = in.nextInt();
+            System.out.print("Enter The Value Of Destination :- ");
+            int destination = in.nextInt();
+
+            adj[source][destination] = 1;
+            adj[destination][source] = 1;
+        }
+
+        printGraph(vertices, edges, adj);
     }
 
-    // ! Add An Edge :- O(1).
-    public void addEdge(int source, int destination) {
-        matrix[source][destination] = 1;
-        matrix[destination][source] = 1;
-    }
-
-    // ! Delete An Edge :- O(1).
-    public void deleteEdge(int source, int destination) {
-        matrix[source][destination] = 0;
-        matrix[destination][source] = 0;
-    }
-
-    // ! Print The Graph.
-    public void printGraph() {
+    // ? Method To Print The Graph.
+    public static void printGraph(int vertices, int edges, int[][] adj) {
         System.out.println("Representation of Graph in the form of Adjacency Matrix: ");
 
         // Todo :- Print In The Form Of A Matrix.
         for (int i = 0; i < vertices; i++) {
             for (int j = 0; j < vertices; j++) {
-                System.out.print(matrix[i][j] + "   ");
+                System.out.print(adj[i][j] + "   ");
             }
             System.out.println();
         }
@@ -37,7 +38,7 @@ public class Adjacency_Matrix {
         for (int i = 0; i < vertices; i++) {
             System.out.print("Vertex " + i + " is connected to: ");
             for (int j = 0; j < vertices; j++) {
-                if (matrix[i][j] == 1) {
+                if (adj[i][j] == 1) {
                     System.out.print(j + " ");
                 }
             }
@@ -46,15 +47,12 @@ public class Adjacency_Matrix {
     }
 
     public static void main(String[] args) {
-        Adjacency_Matrix adj = new Adjacency_Matrix(5);
-        adj.addEdge(0, 1);
-        adj.addEdge(0, 4);
-        adj.addEdge(1, 2);
-        adj.addEdge(1, 3);
-        adj.addEdge(1, 4);
-        adj.addEdge(2, 3);
-        adj.addEdge(3, 4);
 
-        adj.printGraph();
+        System.out.print("Enter The Number Of Vertices In Your Graph :- ");
+        int vertices = in.nextInt();
+        System.out.print("Enter The Number Of Edges In Your Graph :- ");
+        int edges = in.nextInt();
+
+        matrix_representation(vertices, edges);
     }
 }
