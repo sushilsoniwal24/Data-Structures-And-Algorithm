@@ -1,54 +1,60 @@
 package Graph.Introduction_To_Graphs;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Adjacency_List {
-    int vertices;
 
     // ! Add An Edge :- O(1).
-    public static void addEdge(ArrayList<ArrayList<Integer>> adj, int source, int destination) {
-
-        // * Adding an edge from source to destination
-        adj.get(source).add(destination);
-
-        // * Adding an edge from destination to source
-        adj.get(destination).add(source);
+    public static void addEdge(ArrayList<ArrayList<Integer>> adjList, int source, int destination) {
+        adjList.get(source).add(destination);
+        adjList.get(destination).add(source);
     }
 
     // ! Delete An Edge :- O(1).
-    public static void deleteEdge(ArrayList<ArrayList<Integer>> adj, int source, int destination) {
-        adj.get(source).remove(destination);
+    public static void deleteEdge(ArrayList<ArrayList<Integer>> adjList, int source, int destination) {
+        adjList.get(source).remove(destination);
     }
 
     // ! Print The Graph.
-    public static void printGraph(ArrayList<ArrayList<Integer>> adj) {
-        System.out.println("Adjacency List representation of Graph: ");
+    public static void printGraph(ArrayList<ArrayList<Integer>> adjList) {
+        System.out.println("\nAdjacency List representation of Graph: ");
 
-        for (int i = 0; i < adj.size(); i++) {
+        for (int i = 0; i < adjList.size(); i++) {
             System.out.println("Adjacency List of vertex " + i);
             System.out.print(i + " -> ");
-            for (int j = 0; j < adj.get(i).size(); j++) {
-                System.out.print(adj.get(i).get(j) + " ");
+            for (int j = 0; j < adjList.get(i).size(); j++) {
+                System.out.print(adjList.get(i).get(j) + " ");
             }
             System.out.println();
         }
     }
 
     public static void main(String[] args) {
-        int vertices = 5;
-        ArrayList<ArrayList<Integer>> adj = new ArrayList<ArrayList<Integer>>(vertices);
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter The Number Of Vertices In Your Graph :- ");
+        int vertices = in.nextInt();
+
+        ArrayList<ArrayList<Integer>> adjList = new ArrayList<>();
 
         for (int i = 0; i < vertices; i++) {
-            adj.add(new ArrayList<Integer>());
+            adjList.add(new ArrayList<>());
         }
 
-        addEdge(adj, 0, 1);
-        addEdge(adj, 0, 4);
-        addEdge(adj, 1, 2);
-        addEdge(adj, 1, 3);
-        addEdge(adj, 2, 3);
-        addEdge(adj, 3, 4);
+        System.out.print("Enter The Number Of Edges In Your Graph :- ");
+        int edges = in.nextInt();
 
-        printGraph(adj);
+        for (int i = 0; i < edges; i++) {
+            System.out.print("Enter The Value Of Source :- ");
+            int source = in.nextInt();
+            System.out.print("Enter The Value Of Destination :- ");
+            int destination = in.nextInt();
+
+            addEdge(adjList, source, destination);
+        }
+
+        printGraph(adjList);
+
+        in.close();
     }
 }
